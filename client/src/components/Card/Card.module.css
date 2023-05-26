@@ -1,0 +1,19 @@
+.imageDog {
+  max-width: 250px;
+  max-height: 250px;
+}
+
+.cardDogs{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 350px;
+  max-height: 500px;
+  border: 1px solid black;
+}
+
+.buttonCard{
+  text-decoration: none;
+  color: aliceblue;
+}
+
