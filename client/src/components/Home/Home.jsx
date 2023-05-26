@@ -18,7 +18,7 @@ const Home =()=>{
             { allDogs && allDogs.map((dog)=> {
                 //console.log(dog);
                 return(
-                    <Card image={dog.image.url} name={dog.name} weight={dog.weight.metric} temperament={dog.temperament} />
+                    <Card id= {dog.id} image={dog.image.url} name={dog.name} weight={dog.weight.metric} temperament={dog.temperament} />
                     )
                 })}
             </div>
