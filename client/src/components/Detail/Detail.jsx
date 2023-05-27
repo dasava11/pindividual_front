@@ -13,9 +13,7 @@ const Detail =(props)=>{
      const navigate = useNavigate();
 
     useEffect( ()=>{
-      console.log('Entre')
-        console.log(REACT_APP_GET_DOGS_BYID+id);
-
+    
        axios.get(REACT_APP_GET_DOGS_BYID+id).then((response)=>{
         console.log(response)
         const resDog = response.data

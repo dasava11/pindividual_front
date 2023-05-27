@@ -4,6 +4,7 @@ import styles from './Home.module.css'
 import {getAllDogs} from '../../redux/actions/actions';
 import Card from '../Card/Card.jsx';
 
+
 const Home =()=>{
     const dispatch = useDispatch();
 
@@ -16,11 +17,13 @@ const Home =()=>{
             <h1>Home</h1>
             <div className={styles.gridDogs}>
             { allDogs && allDogs.map((dog)=> {
-                //console.log(dog);
+               
                 return(
-                    <Card id= {dog.id} image={dog.image.url} name={dog.name} weight={dog.weight.metric} temperament={dog.temperament} />
-                    )
-                })}
+                   <Card id= {dog.id} image={dog.image.url} name={dog.name} weight={dog.weight?.metric} temperament={dog.temperament} />
+                    ); 
+                   
+                
+            })}
             </div>
         </div>
     );
