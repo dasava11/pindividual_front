@@ -1,0 +1,12 @@
+.containerNavBar{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  background-color: rgb(188, 215, 215);
+  border-bottom: 2rem;
+}
+
+.logoPage{
+  max-width: 50px;
+  max-height: 50px;
+}

@@ -1,0 +1,4 @@
+.containerSearchBar{
+  display: flex;
+  flex-direction: row;
+}

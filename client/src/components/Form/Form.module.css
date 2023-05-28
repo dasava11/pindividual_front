@@ -1,3 +1,38 @@
 .containerForm{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     border: 1px solid blue;
+    margin: 0, auto;
+    
+    align-items: center;
+    padding-bottom: 4rem;
+}
+
+.form{
+    display: flex;
+    flex-direction: column;
+    border: 1px solid black;
+    padding: 3rem;
+}
+
+.labelsForm{
+   border: none;
+   margin: 0 4rem;
+   padding-top: 1rem;
+}
+
+.inputsForm{
+    border: 1px solid black;
+    border-radius: 4px;
+}
+
+.backHome {
+    margin-top: 1rem;
+}
+
+.addButton{
+    background-color: rgb(136, 101, 169);
+    border: none;
+    margin-top: 1rem;
 }
