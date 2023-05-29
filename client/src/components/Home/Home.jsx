@@ -19,11 +19,11 @@ const Home =()=>{
             { allDogs && allDogs.map((dog)=> {
                if (dog.hasOwnProperty("temperament")) {
                 return(
-                   <Card id= {dog.id} image={dog.image.url} name={dog.name} weight={dog.weight?.metric} temperament={dog.temperament} />
+                   <Card id= {dog.id} image={dog.image.url? dog.image.url : dog.image} name={dog.name} weight={dog.weight?.metric} temperament={dog.temperament} />
                 );  
                } else if(dog.hasOwnProperty("temperaments")) {
                 return(
-                   <Card id= {dog.id} image={dog.image.url} name={dog.name} weight={dog.weight?.metric} temperament={dog.temperaments[0]?.name} />
+                   <Card id= {dog.id} image={dog.image.url? dog.image.url : dog.image} name={dog.name} weight={dog.weight?.metric? dog.weight?.metric : dog.weight} temperament={dog.temperaments[0]?.name} />
                 );  
                } else {
                 return(
