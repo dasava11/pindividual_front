@@ -10,3 +10,10 @@
     grid-template-columns: repeat(3, 1fr);
     gap: 2rem;
 }
+
+.filters{
+    display: flex;
+    flex-direction: row;
+    margin: 0 0 2rem 0;
+    justify-content: space-between;
+}

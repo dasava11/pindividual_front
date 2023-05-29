@@ -35,12 +35,12 @@ const Detail =()=>{
           <div className={styles.info}>
             {dog && <h1>Name: {dog.name}</h1>}
             {dog && <h2>ID: {dog.id}</h2>}
-            {dog && <h2>Height: {dog.height?.metric}</h2>}
-            {dog && <h2>Weight: {dog.weight?.metric}</h2>}
+            {dog && <h2>Height: {dog.height?.metric? dog.height?.metric : dog.height}</h2>}
+            {dog && <h2>Weight: {dog.weight?.metric? dog.weight?.metric : dog.weight}</h2>}
             {dog && <h2>life span: {dog.life_span}</h2>}
             {dog && <h2>Temperaments: {dog.temperament}</h2>}
           </div>
-            {dog && <img src={dog.image?.url} alt={dog.name} className={styles.foto}/>}
+            {dog && <img src={dog.image?.url? dog.image.url : dog.image} alt={dog.name} className={styles.foto}/>}
         </div>
         <button className={styles.backHome} onClick={()=>navigate('/home')} >Volver</button>
     </div>

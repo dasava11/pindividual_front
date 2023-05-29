@@ -3,6 +3,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import styles from './Home.module.css'
 import {getAllDogs} from '../../redux/actions/actions';
 import Card from '../Card/Card.jsx';
+import FilterTempers from '../FilterTempers/FilterTempers.jsx';
+import SearchBar from '../SearchBar/SearchBar';
 
 
 const Home =()=>{
@@ -15,6 +17,10 @@ const Home =()=>{
     return(
         <div className={styles.containerHome}>
             <h1>Home</h1>
+            <div className={styles.filters} >
+            <FilterTempers/>
+            <SearchBar /* onSearch={(dog)=>props.onSearch(dog)}  *//>
+            </div>
             <div className={styles.gridDogs}>
             { allDogs && allDogs.map((dog)=> {
                if (dog.hasOwnProperty("temperament")) {

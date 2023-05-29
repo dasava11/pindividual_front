@@ -9,8 +9,10 @@ const Form =()=>{
     const navigate = useNavigate()
     const [input, setInput] = useState({
         name: '', 
-        weight:'', 
-        height:'', 
+        height_min:'', 
+        height_max:'', 
+        weight_min:'', 
+        weight_max:'', 
         life_span:'', 
         image:'', 
         temperament:''
@@ -48,15 +50,19 @@ useEffect(()=>{
             <form onSubmit={handleSubmit} className={styles.form}>
                 <label className={styles.labelsForm}>Name:</label>
                 <input name='name' className={styles.inputsForm}  onChange={handleChangeInput} type="text" />
-                <label className={styles.labelsForm}>weight:</label>
-                <input name='weight' className={styles.inputsForm} onChange={handleChangeInput} type="text" />
-                <label className={styles.labelsForm}>height:</label>
-                <input name='height' className={styles.inputsForm} onChange={handleChangeInput} type="text" />
-                <label className={styles.labelsForm}>life span:</label>
+                <label className={styles.labelsForm}>Weight minimun:</label>
+                <input name='weight_min' className={styles.inputsForm} onChange={handleChangeInput} type="text" />
+                <label className={styles.labelsForm}>Weight maximun:</label>
+                <input name='weight_max' className={styles.inputsForm} onChange={handleChangeInput} type="text" />
+                <label className={styles.labelsForm}>Height minimun:</label>
+                <input name='height_min' className={styles.inputsForm} onChange={handleChangeInput} type="text" />
+                <label className={styles.labelsForm}>Height maximun:</label>
+                <input name='height_max' className={styles.inputsForm} onChange={handleChangeInput} type="text" />
+                <label className={styles.labelsForm}>Life span:</label>
                 <input name='life_span' className={styles.inputsForm}onChange={handleChangeInput} type="text" />
-                <label className={styles.labelsForm}>image:</label>
+                <label className={styles.labelsForm}>Image:</label>
                 <input name='image' className={styles.inputsForm} onChange={handleChangeInput} type="text" />
-                <label className={styles.labelsForm}>temperament:</label>
+                <label className={styles.labelsForm}>Temperament:</label>
                 <select name={'temperament'} className={styles.inputsForm} onChange={handleChangeInput}>
                     <option>Select tempers</option>
                     {tempers && tempers.map((temper)=>(

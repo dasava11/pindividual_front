@@ -9,7 +9,6 @@ return(
   <div className={styles.containerNavBar} >
     <img className={styles.logoPage} src="https://img.freepik.com/vector-premium/sniffer-dog-logo-design-vector-silueta-sniffer-dog-vector-ilustracion_647432-493.jpg?w=2000" alt="logo" />
     <NavLink to="/form" >Create Dog</NavLink>
-    <SearchBar onSearch={(dog)=>props.onSearch(dog)} />
   </div>
 )
 
