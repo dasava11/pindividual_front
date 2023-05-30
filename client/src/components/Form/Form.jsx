@@ -7,12 +7,16 @@ const {REACT_APP_GET_ALL_TEMPER, REACT_APP_GET_ALL_DOGS} = process.env
 //
 const Form =()=>{
     const navigate = useNavigate()
-    const [input, setInput] = useState({
-        name: '', 
+    const [size, setSize] = useState({
         height_min:'', 
         height_max:'', 
         weight_min:'', 
         weight_max:'', 
+    })
+    const [input, setInput] = useState({
+        name: '', 
+        height: {},
+        weight:{},
         life_span:'', 
         image:'', 
         temperament:''
@@ -25,11 +29,19 @@ const handleChangeInput =(event)=>{
         ...input, 
         [name]: value
      })
+
+     setSize({
+        ...size,
+        [name]: value
+     })
 }
 
 const handleSubmit =(event)=>{
    event.preventDefault()
    console.log(input);
+
+   input.height = { metric: `${size.height_min} - ${size.height_max}`};
+   input.weight = { metric: `${size.weight_min} - ${size.weight_max}`};
 
    axios.post(REACT_APP_GET_ALL_DOGS, input).then(()=>
     alert('the dog has been created')).catch(()=>("the dog hasn't been created"))
