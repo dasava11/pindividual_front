@@ -1,4 +1,4 @@
-import { GET_ALL_DOGS } from "../actionstypes/actionsType";
+import { GET_ALL_DOGS, /* GET_ALL_TEMPERS */ } from "../actionstypes/actionsType";
 
 const initialState = {
   dogs: [],

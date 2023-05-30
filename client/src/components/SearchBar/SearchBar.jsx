@@ -2,25 +2,25 @@ import React, { useState} from "react";
 import { useSelector } from "react-redux";
 import styles from "./SearchBar.module.css";
 
-const SearchBar =(props)=>{
+const SearchBar =({search, setSearch})=>{
 
 const allDogs = useSelector((state)=>state.allDogs)
 
+  const [search, setSearch] = useState('');
   const [dog, setDog]= useState([]);
 
   const handleInputChange = (event)=>{
-  const{value}= event.target;
-  search(value);
-  };
+    const{value}= event.target;
+    setSearch(value);
+    console.log(value)
+  }; 
 
   const handleClick =(props)=>{
-    props.onSearch(dog)
-    setDog([])
+ 
   }
 
   const handleKey =(event)=>{
-   props.onSearch(dog)
-    setDog([])
+  
   }
 
   const search=(dogSearch)=>{
