@@ -4,7 +4,7 @@ import styles from "./SearchBar.module.css";
 
 const SearchBar =({search, setSearch})=>{
 
-const allDogs = useSelector((state)=>state.allDogs)
+/* const allDogs = useSelector((state)=>state.allDogs)
 
   const [search, setSearch] = useState('');
   const [dog, setDog]= useState([]);
@@ -30,12 +30,12 @@ const allDogs = useSelector((state)=>state.allDogs)
       }
     setDog(dogFound)
   })
-}
+} */
 
   return(
     <div className={styles.containerSearchBar}>
-    <input type="search" placeholder="Buscar una raza" onChange={handleInputChange} onKeyDown={handleKey}/>
-    <button onClick={handleClick}>Buscar</button>
+    <input type="search" placeholder="Buscar una raza" /* onChange={handleInputChange} onKeyDown={handleKey} *//>
+    <button /* onClick={handleClick} */>Buscar</button>
     </div>
   )
 }
