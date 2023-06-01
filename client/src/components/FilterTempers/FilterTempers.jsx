@@ -3,27 +3,26 @@ import axios from "axios"
 import styles from "./FilterTempers.module.css"
 const {REACT_APP_GET_ALL_TEMPER} = process.env
 
-const FilterTempers = ()=>{
+const FilterTempers = ({handleFilterTempers})=>{
 
-const [filter, setFilter]= useState([])
+const [tempers, setTempers]= useState([])
 
 
 useEffect(()=>{
     axios.get(REACT_APP_GET_ALL_TEMPER).then(response=>{
         const resTempers = response.data
-        setFilter(resTempers);
+        setTempers(resTempers);
     })
 },[]);
 
   return(
     <div className={styles.containerFilterTempers} >
-      <select name={'tempers'} className={styles.filterTempers} /* onChange={handleChangeInput} */>
+      <select name={'tempers'} className={styles.filterTempers} onChange={handleFilterTempers}>
         <option>Select tempers</option>
-          {filter && filter.map((temper)=>(
+          {tempers && tempers.map((temper)=>(
             <option key={temper.id} value={temper.name}>{temper.name}</option>
           ))}
       </select>
-      <button>Search</button>
     </div>
   )
 }

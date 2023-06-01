@@ -20,7 +20,7 @@ const Detail =()=>{
           console.log(resDog)
         setDog(resDog);
         } else{
-        window.alert("No hay perros con ese ID");
+        window.alert("No hay perros");
         };
         }).catch((error)=>{
           window.alert("UPS!!! Algo salió mal");  

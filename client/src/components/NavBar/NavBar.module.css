@@ -1,12 +1,29 @@
 .containerNavBar{
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
-  background-color: rgb(188, 215, 215);
+  justify-content: space-between ;
+  background-color: rgb(8, 65, 65);
   border-bottom: 2rem;
+  
+}
+
+.containerNav{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
 }
 
 .logoPage{
   max-width: 50px;
   max-height: 50px;
+  cursor: pointer;
+}
+
+.linkCreate{
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color:aliceblue;
+  font-weight: bold;
+  font-size: 18px;
 }

@@ -1,4 +1,7 @@
-import { GET_ALL_DOGS, /* GET_ALL_TEMPERS */ } from "../actionstypes/actionsType";
+import {
+  GET_ALL_DOGS,
+  GET_DOGS_BY_NAMES /* GET_ALL_TEMPERS */,
+} from "../actionstypes/actionsType";
 
 const initialState = {
   dogs: [],
@@ -11,6 +14,11 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         dogs: action.payload,
+        allDogs: action.payload,
+      };
+    case GET_DOGS_BY_NAMES:
+      return {
+        ...state,
         allDogs: action.payload,
       };
     default:

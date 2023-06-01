@@ -11,7 +11,7 @@ const Form =()=>{
         height_min:'', 
         height_max:'', 
         weight_min:'', 
-        weight_max:'', 
+        weight_max:'',
     })
     const [input, setInput] = useState({
         name: '', 

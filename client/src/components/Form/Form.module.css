@@ -2,9 +2,7 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    border: 1px solid blue;
     margin: 0, auto;
-    
     align-items: center;
     padding-bottom: 4rem;
 }
@@ -12,8 +10,12 @@
 .form{
     display: flex;
     flex-direction: column;
-    border: 1px solid black;
+    border: none;
+
+    border-radius: 0.5rem;
     padding: 3rem;
+    box-shadow: 0 1px 2px 2px rgb(200, 199, 199);
+    background-color: white;
 }
 
 .labelsForm{
@@ -32,7 +34,7 @@
 }
 
 .addButton{
-    background-color: rgb(136, 101, 169);
+    background-color: rgb(92, 135, 222);
     border: none;
     margin-top: 1rem;
 }

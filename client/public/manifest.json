@@ -1,9 +1,9 @@
 {
-  "short_name": "React App",
+  "short_name": "Dog App",
   "name": "Create React App Sample",
   "icons": [
     {
-      "src": "favicon.ico",
+      "src": "https://images.theconversation.com/files/521751/original/file-20230419-18-hg9dc3.jpg?ixlib=rb-1.1.0&q=45&auto=format&w=1200&h=1200.0&fit=crop",
       "sizes": "64x64 32x32 24x24 16x16",
       "type": "image/x-icon"
     }

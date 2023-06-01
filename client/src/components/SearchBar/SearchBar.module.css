@@ -3,3 +3,7 @@
   flex-direction: row;
   margin-left: 2rem;
 }
+
+.buttonSearch{
+  border-radius: 0px;
+}
