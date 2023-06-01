@@ -6,35 +6,32 @@
 }
 
 .numbersPages{
-background-color: #0A2B6C;
-color: aliceblue;
-border: none;
-border-radius: 10px;
+background-color: rgb(215, 247, 245);
+color: grey;
+border: 1.8px solid grey;
+border-radius: 0px;
 padding: 0 auto;
-margin-left: 0.5rem;
-margin-right: 0.5rem;
+font-weight: bold;
 }
 
 .next{
-background-color: #0A2B6C;
-border: none;
-border-radius: 15px;
-padding: 4px 10px;
-margin-left: 5rem;
+background-color: rgb(215, 247, 245);
+color: grey;
+border: 1px solid grey;
+border-radius: 0px;
+padding: 0 auto;
 cursor: pointer;
 font-size: 1.2rem;
-color: aliceblue;
 font-weight: bold;
 }
 
 .prev{
-    background-color: #0A2B6C;
-    border: none;
-    border-radius: 15px;
-    padding: 4px 10px;
-    margin-right: 5rem;
+    background-color: rgb(215, 247, 245);
+    color: grey;
+    border: 1px solid grey;
+    border-radius: 0px;
+    padding: 1rem auto;
     cursor: pointer;
     font-size: 1.2rem;
-    color: aliceblue;
     font-weight: bold;
 }

@@ -21,7 +21,7 @@ if(e && pages > 1) {
 };
     return(
         <div className={styles.containerButtons} >
-            <button className={styles.prev} onClick={handleClickPrev}>{'<'}</button>
+            <button className={styles.numbersPages} onClick={handleClickPrev}>{'<'}</button>
             <button className={styles.numbersPages}>1</button>
             <button className={styles.numbersPages}>2</button>
             <button className={styles.numbersPages}>3</button>
@@ -34,7 +34,7 @@ if(e && pages > 1) {
             <button className={styles.numbersPages}>10</button>
             <button className={styles.numbersPages}>11</button>
             <button className={styles.numbersPages}>12</button>
-            <button className={styles.next} onClick={handleClickNext}>{'>'}</button>
+            <button className={styles.numbersPages} onClick={handleClickNext}>{'>'}</button>
         </div>
     )
 }

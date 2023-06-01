@@ -30,19 +30,19 @@ const Detail =()=>{
 
     return(
     <div className={styles.containerDetail}>
-        <h1>Detail</h1>
-            <div className={styles.contenedorP}>
+        <div className={styles.containerD}>
           <div className={styles.info}>
             {dog && <h1>Name: {dog.name}</h1>}
             {dog && <h2>ID: {dog.id}</h2>}
-            {dog && <h2>Height: {dog.height?.metric}</h2>}
-            {dog && <h2>Weight: {dog.weight?.metric}</h2>}
+            {dog && <img className={styles.imageDetail} src={dog.image?.url? dog.image.url : dog.image} alt={dog.name}/>}
+            {dog && <h2>Height: {dog.height?.metric} cm</h2>}
+            {dog && <h2>Weight: {dog.weight?.metric} Kg</h2>}
             {dog && <h2>life span: {dog.life_span}</h2>}
-            {dog && <h2>Temperaments: {dog.hasOwnProperty("temperaments") ? dog.temperaments[0]?.name : dog.temperament}</h2>}
+            {dog.hasOwnProperty("temperament") ? <h3 className={styles.tempersDetail} >Temperaments: {dog.temperament}</h3> : dog.hasOwnProperty("temperaments") ? <h3>Temperaments: {dog.temperaments[0]?.name}</h3> : null}
           </div>
-            {dog && <img src={dog.image?.url? dog.image.url : dog.image} alt={dog.name} className={styles.foto}/>}
         </div>
-        <button className={styles.backHome} onClick={()=>navigate('/home')} >Volver</button>
+
+        <button className={styles.backHome} onClick={()=>navigate('/home')} >Back</button>
     </div>
     )
 }

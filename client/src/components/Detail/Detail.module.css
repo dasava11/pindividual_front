@@ -1,8 +1,35 @@
 .containerDetail{
-    border: 1px solid black;
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(215, 247, 245);
+}
+
+.containerD{
+    margin-top: 3rem;
+    border:none;
     border-radius: 1rem;
+    background-color: aliceblue;
+    box-shadow: 0 1px 2px 2px rgb(200, 199, 199);
+
 }
 
 .backHome{
     margin-top: 1rem;
+    margin-bottom: 20rem;
+    padding: 1rem 2rem;
+    font-size: 20px;
+    color: aliceblue;
+}
+
+.imageDetail{
+    max-width: 600px;
+    max-height: 400px;
+    margin-bottom: 1rem;
+}
+
+.tempersDetail{
+    padding: 0 5rem;
 }
