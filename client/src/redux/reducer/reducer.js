@@ -2,6 +2,7 @@ import {
   GET_ALL_DOGS,
   GET_DOGS_BY_NAMES,
   FILTER_DOGS_BY_TEMPERS,
+  ORDER_DOGS_BY_NAME,
 } from "../actionstypes/actionsType";
 
 const initialState = {
@@ -39,6 +40,14 @@ const reducer = (state = initialState, action) => {
         ...state,
         allDogs: filterByTempers,
       };
+      case ORDER_DOGS_BY_NAME:
+
+      const orderDogsByName= [];
+
+        return{
+          ...state,
+          allDogs: orderDogsByName,
+        }
     default:
       return state;
   }

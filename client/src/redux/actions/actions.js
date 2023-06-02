@@ -3,7 +3,7 @@ import {
   GET_ALL_DOGS,
   GET_DOGS_BY_NAMES,
   GET_ALL_TEMPERS,
-  FILTER_DOGS_BY_TEMPERS,
+  FILTER_DOGS_BY_TEMPERS, ORDER_DOGS_BY_NAME,
 } from "../actionstypes/actionsType";
 const {
   REACT_APP_GET_ALL_DOGS,
@@ -33,6 +33,13 @@ export const filterDogsByTempers = (payload) => {
     payload,
   };
 };
+
+export const orderDogsByName = (payload) =>{
+  return{
+    type: ORDER_DOGS_BY_NAME,
+    payload,
+  }
+}
 
 export const getAllTempers = () => {
   return async (dispatch) => {
