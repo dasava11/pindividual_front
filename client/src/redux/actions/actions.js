@@ -1,8 +1,9 @@
 import axios from "axios";
 import {
   GET_ALL_DOGS,
-  GET_ALL_TEMPERS,
   GET_DOGS_BY_NAMES,
+  GET_ALL_TEMPERS,
+  FILTER_DOGS_BY_TEMPERS,
 } from "../actionstypes/actionsType";
 const {
   REACT_APP_GET_ALL_DOGS,
@@ -23,6 +24,13 @@ export const getDogsByName = (name) => {
       `${REACT_APP_GET_ALL_DOGS}/name/?name=${name}`
     );
     dispatch({ type: GET_DOGS_BY_NAMES, payload: responseF.data });
+  };
+};
+
+export const filterDogsByTempers = (payload) => {
+  return {
+    type: FILTER_DOGS_BY_TEMPERS,
+    payload,
   };
 };
 

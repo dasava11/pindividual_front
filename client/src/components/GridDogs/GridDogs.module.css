@@ -3,10 +3,11 @@
   align-items: center;
   align-content: center;
   flex-direction: column;
+  margin-bottom: 10rem;
 }
 
 .dogsPage {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 4rem;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
 }

@@ -14,20 +14,11 @@ const Detail =()=>{
     useEffect( ()=>{
     
        axios.get(REACT_APP_GET_DOGS_BYID+id).then((response)=>{
-        
         const resDog = response.data
-        if (resDog.name) {
-          console.log(resDog)
         setDog(resDog);
-        } else{
-        window.alert("No hay perros");
-        };
-        }).catch((error)=>{
-          window.alert("UPS!!! Algo salió mal");  
-        });
-        return setDog({});
+       })
     },[id])
-
+    console.log(dog)
     return(
     <div className={styles.containerDetail}>
         <div className={styles.containerD}>
@@ -38,10 +29,10 @@ const Detail =()=>{
             {dog && <h2>Height: {dog.height?.metric} cm</h2>}
             {dog && <h2>Weight: {dog.weight?.metric} Kg</h2>}
             {dog && <h2>life span: {dog.life_span}</h2>}
-            {dog.hasOwnProperty("temperament") ? <h3 className={styles.tempersDetail} >Temperaments: {dog.temperament}</h3> : dog.hasOwnProperty("temperaments") ? <h3>Temperaments: {dog.temperaments[0]?.name}</h3> : null}
+            {dog.temperament && <h3 className={styles.tempersDetail} >Temperaments: {dog.temperament}</h3>}
+            {dog.temperaments && <h3 className={styles.tempersDetail} >Temperaments: {dog.temperaments.map((temper)=>(<span>{temper.name}</span>))}</h3>}
           </div>
         </div>
-
         <button className={styles.backHome} onClick={()=>navigate('/home')} >Back</button>
     </div>
     )
