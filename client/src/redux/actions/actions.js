@@ -3,7 +3,9 @@ import {
   GET_ALL_DOGS,
   GET_DOGS_BY_NAMES,
   GET_ALL_TEMPERS,
-  FILTER_DOGS_BY_TEMPERS, ORDER_DOGS_BY_NAME,
+  FILTER_DOGS_BY_TEMPERS,
+  ORDER_DOGS_BY_NAME,
+  FILTER_BY_ORIGIN,
 } from "../actionstypes/actionsType";
 const {
   REACT_APP_GET_ALL_DOGS,
@@ -14,6 +16,13 @@ const {
 export const getAllDogs = () => {
   return async (dispatch) => {
     const response = await axios.get(REACT_APP_GET_ALL_DOGS);
+    response.data.map((dog) =>
+      dog.temperaments
+        ? (dog.temperament = dog.temperaments
+            .map((temper) => temper.name)
+            .toString())
+        : null
+    );
     dispatch({ type: GET_ALL_DOGS, payload: response.data });
   };
 };
@@ -34,12 +43,19 @@ export const filterDogsByTempers = (payload) => {
   };
 };
 
-export const orderDogsByName = (payload) =>{
-  return{
+export const filterDogsByOrigin = (payload) => {
+  return {
+    type: FILTER_BY_ORIGIN,
+    payload,
+  };
+};
+
+export const orderDogsByName = (payload) => {
+  return {
     type: ORDER_DOGS_BY_NAME,
     payload,
-  }
-}
+  };
+};
 
 export const getAllTempers = () => {
   return async (dispatch) => {

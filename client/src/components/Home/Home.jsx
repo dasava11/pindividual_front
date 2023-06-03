@@ -6,6 +6,7 @@ import NavBar from "../NavBar/NavBar";
 import FilterTempers from "../FilterTempers/FilterTempers";
 import GridDogs from "../GridDogs/GridDogs";
 import FilterAzzb from "../FilterAzzb/FilterAzzb";
+import FilterOrigin from "../FilterOrigin/FilterOrigin";
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -25,6 +26,7 @@ const Home = () => {
           <h2>Filters</h2>
           <FilterTempers setPages={setPages} />
           <FilterAzzb setPages={setPages} />
+          <FilterOrigin setPages={setPages} />
         </div>
         <GridDogs allDogs={allDogs} pages={pages} setPages={setPages} />
       </div>
