@@ -11,18 +11,19 @@ export const Pages = ({ allDogs, pages, setPages }) => {
   }
 
   const hanldleClickNumber = (e) => {
-    setPages(e.target.value);
+    const { value } = e.target;
+    setPages(Number(value));
   };
 
   const handleClickNext = (e) => {
     if (e && pages < maximunIndex) {
-      setPages(pages + 1);
+      setPages(Number(pages + 1));
     }
   };
 
   const handleClickPrev = (e) => {
     if (e && pages > 1) {
-      setPages(pages - 1);
+      setPages(Number(pages - 1));
     }
   };
   return (

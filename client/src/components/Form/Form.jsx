@@ -6,7 +6,7 @@ import axios from "axios";
 const { REACT_APP_GET_ALL_TEMPER, REACT_APP_GET_ALL_DOGS } = process.env;
 
 //
-const Form = () => {
+const Form = ({ errors }) => {
   const navigate = useNavigate();
   const [size, setSize] = useState({
     height_min: "",
@@ -56,7 +56,7 @@ const Form = () => {
   };
 
   const handleTemperAdd = (event) => {
-    const { value, name } = event.target;
+    const { value } = event.target;
 
     if (!temperAdd.includes(value) && temperAdd.length <= 6) {
       setTemperAdd([...temperAdd, value]);
@@ -71,9 +71,11 @@ const Form = () => {
     console.log(temperAdd);
   };
 
-  /*   const handleTemperDelete = (event) => {
-    const { value, name } = event.target;
-  }; */
+  const handleTemperDelete = (event) => {
+    const { value } = event.target;
+    let auxT = temperAdd.filter((t) => t !== value);
+    setTemperAdd(auxT);
+  };
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -82,6 +84,7 @@ const Form = () => {
     input.height = { metric: `${size.height_min} - ${size.height_max}` };
     input.weight = { metric: `${size.weight_min} - ${size.weight_max}` };
 
+    input.temperament = temperAdd;
     axios
       .post(REACT_APP_GET_ALL_DOGS, input)
       .then(() => alert("the dog has been created"))
@@ -100,7 +103,7 @@ const Form = () => {
   return (
     <div className={styles.containerForm}>
       <h1 className={styles.titleForm}>Create a new dog for your collection</h1>
-      <form onSubmit={handleSubmit} className={styles.form}>
+      <form className={styles.form} onSubmit={handleSubmit}>
         <div className={styles.styleImput}>
           <label className={styles.labelsForm}>Name:</label>
           <input
@@ -205,7 +208,7 @@ const Form = () => {
                   name={t}
                   value={t}
                   className={styles.addTemper}
-                  /* onClick={handleTemperDelete} */
+                  onClick={(e) => handleTemperDelete(e)}
                 >
                   {t}
                 </button>
