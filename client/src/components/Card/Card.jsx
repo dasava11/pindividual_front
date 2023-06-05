@@ -11,7 +11,7 @@ const Card = ({ id, image, name, weight, temperament, temperaments }) => {
       <h4 className={styles.infodog}>Temperaments:</h4>
       {temperament && <h4 className={styles.infodogTemper}>{temperament}</h4>}
       {/* {temperaments && temperaments.map((temper)=>(<h4>{temper.name}</h4>))} */}
-      <button>
+      <button className={styles.buttonCard}>
         {id && (
           <Link to={`/home/detail/${id}`} className={styles.buttonCard}>
             Detail

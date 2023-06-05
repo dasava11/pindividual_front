@@ -4,6 +4,7 @@ import {
   FILTER_DOGS_BY_TEMPERS,
   ORDER_DOGS_BY_NAME,
   FILTER_BY_ORIGIN,
+  ORDER_BY_WEIGHT,
 } from "../actionstypes/actionsType";
 
 const initialState = {
@@ -19,11 +20,13 @@ const reducer = (state = initialState, action) => {
         dogs: action.payload,
         allDogs: action.payload,
       };
+
     case GET_DOGS_BY_NAMES:
       return {
         ...state,
         allDogs: action.payload,
       };
+
     case FILTER_DOGS_BY_TEMPERS:
       let filterByTempers = [];
 
@@ -37,30 +40,61 @@ const reducer = (state = initialState, action) => {
         ...state,
         allDogs: filterByTempers,
       };
+
     case ORDER_DOGS_BY_NAME:
       let orderDogsByName = [];
-      /* console.log(action.payload); */
       if (action.payload === "Order") {
-        orderDogsByName = state.dogs;
+        orderDogsByName = state.allDogs;
       } else if (action.payload === "A-Z") {
-        orderDogsByName = state.dogs?.sort((a, b) =>
+        orderDogsByName = state.allDogs?.sort((a, b) =>
           a.name.localeCompare(b.name)
         );
       } else if (action.payload === "Z-A") {
-        orderDogsByName = state.dogs.sort((b, a) =>
+        orderDogsByName = state.allDogs.sort((b, a) =>
           a.name.localeCompare(b.name)
-        );
-      } else if (action.payload === "Peso") {
-        orderDogsByName = state.dogs.sort((a, b) =>
-          a.weight?.metric > b.weight?.metric ? 1 : -1
         );
       }
 
-      orderDogsByName = [...state.dogs];
+      orderDogsByName = [...state.allDogs];
       return {
         ...state,
         allDogs: orderDogsByName,
       };
+
+    case ORDER_BY_WEIGHT:
+      let orderWeight = [];
+
+      if (action.payload === "OrderW") {
+        orderWeight = state.allDogs;
+      } else if (action.payload === "min") {
+        state.allDogs.sort((a, b) =>
+          Number(a.weight?.metric.split(" ")[0]) >
+          Number(b.weight?.metric.split(" ")[0])
+            ? 1
+            : -1
+        );
+      } else if (action.payload === "max") {
+        state.allDogs.sort((a, b) =>
+          Number(a.weight?.metric.split(" ")[0]) >
+          Number(b.weight?.metric.split(" ")[0])
+            ? -1
+            : 1
+        );
+      }
+      let Nan = state.allDogs.filter((dog) =>
+        isNaN(Number(dog.weight?.metric.split(" ")[0]))
+      );
+      orderWeight = state.allDogs.filter(
+        (dog) => !isNaN(Number(dog.weight?.metric.split(" ")[0]))
+      );
+
+      orderWeight = [...orderWeight, ...Nan];
+
+      return {
+        ...state,
+        allDogs: orderWeight,
+      };
+
     case FILTER_BY_ORIGIN:
       let filterDogsByOrigin = [];
 
@@ -69,7 +103,6 @@ const reducer = (state = initialState, action) => {
         : action.payload === "base"
         ? (filterDogsByOrigin = state.dogs.filter((dog) => !dog.createInDb))
         : (filterDogsByOrigin = state.dogs);
-      console.log(filterDogsByOrigin);
       return {
         ...state,
         allDogs: filterDogsByOrigin,

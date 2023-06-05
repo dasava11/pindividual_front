@@ -6,33 +6,39 @@ import {
   FILTER_DOGS_BY_TEMPERS,
   ORDER_DOGS_BY_NAME,
   FILTER_BY_ORIGIN,
+  ORDER_BY_WEIGHT,
 } from "../actionstypes/actionsType";
-const {
-  REACT_APP_GET_ALL_DOGS,
-  REACT_APP_GET_ALL_TEMPER,
-  /* FILTER_DOGS_BY_TEMPERS, */
-} = process.env;
+const { REACT_APP_GET_ALL_DOGS, REACT_APP_GET_ALL_TEMPER } = process.env;
 
 export const getAllDogs = () => {
   return async (dispatch) => {
-    const response = await axios.get(REACT_APP_GET_ALL_DOGS);
-    response.data.map((dog) =>
-      dog.temperaments
-        ? (dog.temperament = dog.temperaments
-            .map((temper) => temper.name)
-            .toString())
-        : null
-    );
-    dispatch({ type: GET_ALL_DOGS, payload: response.data });
+    try {
+      const response = await axios.get(REACT_APP_GET_ALL_DOGS);
+      response.data.map((dog) =>
+        dog.temperaments
+          ? (dog.temperament = dog.temperaments
+              .map((temper) => temper.name)
+              .toString())
+          : null
+      );
+      dispatch({ type: GET_ALL_DOGS, payload: response.data });
+    } catch (error) {
+      alert({ message: error.message });
+      console.error(error.message);
+    }
   };
 };
 
 export const getDogsByName = (name) => {
   return async (dispatch) => {
-    const responseF = await axios.get(
-      `${REACT_APP_GET_ALL_DOGS}/name/?name=${name}`
-    );
-    dispatch({ type: GET_DOGS_BY_NAMES, payload: responseF.data });
+    try {
+      const responseF = await axios.get(
+        `${REACT_APP_GET_ALL_DOGS}/name/?name=${name}`
+      );
+      dispatch({ type: GET_DOGS_BY_NAMES, payload: responseF.data });
+    } catch (error) {
+      alert({ message: error.message });
+    }
   };
 };
 
@@ -53,6 +59,14 @@ export const filterDogsByOrigin = (payload) => {
 export const orderDogsByName = (payload) => {
   return {
     type: ORDER_DOGS_BY_NAME,
+    payload,
+  };
+};
+
+export const orderByWeight = (payload) => {
+  console.log(payload);
+  return {
+    type: ORDER_BY_WEIGHT,
     payload,
   };
 };

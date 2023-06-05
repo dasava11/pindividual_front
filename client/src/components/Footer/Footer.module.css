@@ -1,6 +1,6 @@
 .footer{
     background-color: #f2f2f2;
-    position: fixed;
+    position:static ;
     bottom: 0;
     left: 0;
     right: 0;
@@ -23,12 +23,13 @@
 
 .footer_p {
     margin-left: 20px;
-    position:fixed;
+    position:static;
 }
 .footer_l{
     margin-top: 15px;
     margin-left: 35em;
-    position:fixed;
+    position:static;
+    text-decoration: none;
 }
 .newsletter {
     margin-top: -18px;
@@ -61,4 +62,10 @@
 }
 .footer_links{
     margin-left: 5em   ;
+}
+
+.finaly{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 }

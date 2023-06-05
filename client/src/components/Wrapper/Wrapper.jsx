@@ -1,14 +1,14 @@
 import React from "react";
-//import Footer from "../Footer/Footer";
+import Footer from "../Footer/Footer";
 import { Outlet } from "react-router-dom";
 
 const Wrapper = () => {
   return (
     <>
       <Outlet />
-     {/*  <Footer /> */}
+      <Footer />
     </>
   );
 };
 
-export default Wrapper
+export default Wrapper;

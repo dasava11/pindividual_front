@@ -1,12 +1,10 @@
 import React /* , { useState } */ from "react";
-import styles from "./FilterAzzb.module.css";
 import { useDispatch } from "react-redux";
 import { orderDogsByName } from "../../redux/actions/actions";
+import styles from "./OrderAzzb.module.css";
 
-const FilterAzzb = ({ setPages }) => {
-  /* const [order, setOrder] = useState("Order"); */
+const OrderAzzb = ({ setPages }) => {
   const dispatch = useDispatch();
-  console.log(setPages);
 
   const handleOrderDogsName = (event) => {
     const { value } = event.target;
@@ -17,13 +15,12 @@ const FilterAzzb = ({ setPages }) => {
   return (
     <div>
       <select className={styles.filterOrder} onChange={handleOrderDogsName}>
-        <option value="Order">Order</option>
+        <option value="Order">Alphabetical order</option>
         <option value="A-Z">A - Z</option>
         <option value="Z-A">Z - A</option>
-        <option value="Peso">Peso</option>
       </select>
     </div>
   );
 };
 
-export default FilterAzzb;
+export default OrderAzzb;

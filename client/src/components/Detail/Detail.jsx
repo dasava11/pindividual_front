@@ -48,7 +48,7 @@ const Detail = () => {
         </div>
       </div>
       <button className={styles.backHome} onClick={() => navigate("/home")}>
-        Back
+        Back to home
       </button>
     </div>
   );
