@@ -2,21 +2,19 @@ import React, { useEffect, useState } from "react";
 import styles from "./Form.module.css";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-//import validate from "./validate";
+import validate from "./validate";
 const { REACT_APP_GET_ALL_TEMPER, REACT_APP_GET_ALL_DOGS } = process.env;
 
 //
-const Form = ({ errors }) => {
+const Form = (errors) => {
   const navigate = useNavigate();
-  const [size, setSize] = useState({
+
+  const [input, setInput] = useState({
+    name: "",
     height_min: "",
     height_max: "",
     weight_min: "",
     weight_max: "",
-  });
-
-  const [input, setInput] = useState({
-    name: "",
     height: {},
     weight: {},
     life_span: "",
@@ -44,16 +42,10 @@ const Form = ({ errors }) => {
       [name]: value,
     });
 
-    setSize({
-      ...size,
-      [name]: value,
-    });
-
-    /*     setError(
-      validate({ ...input, [name]: value }),
-      validate({ ...size, [name]: value })
-    ); */
+    setError(validate(input));
   };
+
+  console.log(input);
 
   const handleTemperAdd = (event) => {
     const { value } = event.target;
@@ -66,9 +58,6 @@ const Form = ({ errors }) => {
       ...input,
       temperament: [...input.temperament, value],
     });
-
-    console.log(input);
-    console.log(temperAdd);
   };
 
   const handleTemperDelete = (event) => {
@@ -79,16 +68,26 @@ const Form = ({ errors }) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log(input);
 
-    input.height = { metric: `${size.height_min} - ${size.height_max}` };
-    input.weight = { metric: `${size.weight_min} - ${size.weight_max}` };
-
+    input.height = { metric: `${input.height_min} - ${input.height_max}` };
+    input.weight = { metric: `${input.weight_min} - ${input.weight_max}` };
     input.temperament = temperAdd;
+
     axios
       .post(REACT_APP_GET_ALL_DOGS, input)
-      .then(() => alert("the dog has been created"))
-      .catch(() => alert("the dog hasn't been created"));
+      .then((res) => alert(res.data.message))
+      .catch((res) => alert(res.response.data.message));
+
+    setError({
+      name: "",
+      height_min: "",
+      height_max: "",
+      weight_min: "",
+      weight_max: "",
+      life_span: "",
+      image: "",
+      temperament: "",
+    });
   };
 
   const [tempers, setTempers] = useState([]);
@@ -205,6 +204,7 @@ const Form = ({ errors }) => {
             {temperAdd &&
               temperAdd.map((t) => (
                 <button
+                  key={t}
                   name={t}
                   value={t}
                   className={styles.addTemper}

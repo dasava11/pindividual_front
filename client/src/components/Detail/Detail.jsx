@@ -10,10 +10,17 @@ const Detail = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    axios.get(REACT_APP_GET_DOGS_BYID + id).then((response) => {
-      const resDog = response.data;
-      setDog(resDog);
-    });
+    try {
+      axios
+        .get(REACT_APP_GET_DOGS_BYID + id)
+        .then((response) => {
+          const resDog = response.data;
+          setDog(resDog);
+        })
+        .catch((res) => alert(res.message));
+    } catch (error) {
+      alert(error.message);
+    }
   }, [id]);
   console.log(dog);
   return (

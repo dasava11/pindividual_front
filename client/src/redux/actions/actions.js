@@ -24,7 +24,6 @@ export const getAllDogs = () => {
       dispatch({ type: GET_ALL_DOGS, payload: response.data });
     } catch (error) {
       alert({ message: error.message });
-      console.error(error.message);
     }
   };
 };
@@ -36,8 +35,9 @@ export const getDogsByName = (name) => {
         `${REACT_APP_GET_ALL_DOGS}/name/?name=${name}`
       );
       dispatch({ type: GET_DOGS_BY_NAMES, payload: responseF.data });
+      //(res) => alert(res.message);
     } catch (error) {
-      alert({ message: error.message });
+      //(res) => alert(res.message);
     }
   };
 };
