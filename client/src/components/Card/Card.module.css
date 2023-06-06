@@ -28,8 +28,8 @@
     &:hover {
         transition: all 0.7s ease;
         transform: scale(1.1);
-        background-color: burlywood;
-        color:darkblue;
+        background-color:darkorange;
+        color: black;
         cursor: pointer;
       }
 }
