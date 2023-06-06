@@ -6,7 +6,7 @@ import validate from "./validate";
 const { REACT_APP_GET_ALL_TEMPER, REACT_APP_GET_ALL_DOGS } = process.env;
 
 //
-const Form = (errors) => {
+const Form = () => {
   const navigate = useNavigate();
 
   const [input, setInput] = useState({

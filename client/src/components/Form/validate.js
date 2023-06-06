@@ -1,9 +1,8 @@
 const regexOnlyLetters = /^[a-zA-Z\s]+$/;
 const regexOnlyNumbers = /^[0-9]+$/;
-const regexURL = /^https/;
+/* const regexURL = /^https/; */
 
 const validate = (input) => {
-  console.log(input);
   const errors = {};
 
   input.name === "" ||
