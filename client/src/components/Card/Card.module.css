@@ -1,6 +1,14 @@
+.contentImg{
+  width: 100%;
+  height: auto;
+  margin: 1rem 1rem;
+}
+
 .imageDog {
-  max-width: 250px;
-  max-height: 250px;
+  width: 300px;
+  height: 250px;
+  object-fit: cover;
+  
 }
 
 .cardDogs{
@@ -8,13 +16,14 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    position: relative;
     max-width: 350px;
-    max-height: 500px;
+    max-height: auto;
     box-shadow: 0 1px 2px 2px rgb(200, 199, 199);
     background-color: white;
     border: none;
     border-radius: 0.5rem;
-    padding: 1rem 0 1rem 0;
+    padding: 0 0 1rem 0;
 
     &:hover {
         transition: all 0.7s ease;
@@ -28,11 +37,12 @@
 .buttonCard{
   text-decoration: none;
   color: aliceblue;
+  margin-top: 1rem;
   margin-bottom: 1rem;
 }
 
 .infodog{
-  margin-top: 0.6rem;
+  margin-top: 0.2rem;
   margin-bottom: 0.6rem;
 }
 

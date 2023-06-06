@@ -48,7 +48,7 @@ const Detail = () => {
             <h3 className={styles.tempersDetail}>
               Temperaments:{" "}
               {dog.temperaments.map((temper) => (
-                <span>{temper.name}</span>
+                <span>{temper.name} </span>
               ))}
             </h3>
           )}

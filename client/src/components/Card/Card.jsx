@@ -5,7 +5,9 @@ import { Link } from "react-router-dom";
 const Card = ({ id, image, name, weight, temperament, temperaments }) => {
   return (
     <div className={styles.cardDogs}>
-      {image && <img src={image} className={styles.imageDog} alt={name} />}
+      <div className={styles.contentImg}>
+        {image && <img src={image} className={styles.imageDog} alt={name} />}
+      </div>
       {name && <h2>{name}</h2>}
       {weight && <h4 className={styles.infodog}>Weight: {weight}</h4>}
       <h4 className={styles.infodog}>Temperaments:</h4>

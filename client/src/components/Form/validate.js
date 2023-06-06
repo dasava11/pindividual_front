@@ -42,8 +42,8 @@ const validate = (input) => {
       (errors.life_span =
         "El dato no puede exceder 2 digitos y solo debe tener números, tampoco puede estar vacio"));
 
-  !regexURL.test(input.image) &&
-    (errors.image = "El formato de anexar la imagen es incorrecto");
+  /* !regexURL.test(input.image) &&
+    (errors.image = "El formato de anexar la imagen es incorrecto"); */
 
   return errors;
 };

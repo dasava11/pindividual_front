@@ -20,18 +20,6 @@ const Footer = () => {
   return (
     <div className={styles.footer}>
       <footer>
-        <div className={styles.newsletter}>
-          <h3>subscribe to newsletter</h3>
-          <form onSubmit={handleSubmit}>
-            <input
-              type="email"
-              placeholder="Digita tu correo electrónico..."
-              value={email}
-              onChange={handleChange}
-            />
-            <button type="submit">Suscribirse</button>
-          </form>
-        </div>
         <div className={styles.finaly}>
           <div>
             <p className={styles.footer_p}>APP DOGS © 2023</p>

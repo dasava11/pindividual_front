@@ -12,6 +12,12 @@ border: 1.8px solid grey;
 border-radius: 0px;
 padding: 0 auto;
 font-weight: bold;
+
+    &:hover {
+            background-color: rgb(8, 65, 65);
+            color: rgb(215, 247, 245);
+            cursor: pointer;
+        }
 }
 
 .next{
