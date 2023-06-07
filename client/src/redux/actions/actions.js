@@ -36,8 +36,8 @@ export const getDogsByName = (name) => {
       );
       dispatch({ type: GET_DOGS_BY_NAMES, payload: responseF.data });
       //(res) => alert(res.message);
-    } catch (error) {
-      //(res) => alert(res.message);
+    } catch (res) {
+      alert(res.response.data.message);
     }
   };
 };

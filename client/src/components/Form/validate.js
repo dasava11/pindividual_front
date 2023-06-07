@@ -1,48 +1,77 @@
 const regexOnlyLetters = /^[a-zA-Z\s]+$/;
-const regexOnlyNumbers = /^[0-9]+$/;
+//const regexOnlyNumbers = /^[0-9]+$/;
 /* const regexURL = /^https/; */
 
 const validate = (input) => {
   const errors = {};
 
-  input.name === "" ||
-    input.name.length > 20 ||
-    (!regexOnlyLetters.test(input.name) &&
-      (errors.name =
-        "El nombre no puede exceder 20 caracteres y solo puede contener letras, tampoco puede estar vacio"));
+  if (!input.name || input.name === undefined) {
+    errors.name = "El campo no puede estar vacio";
+  } else if (input.name.length > 20) {
+    errors.name = "El nombre no puede exceder 20 caracteres";
+  } else if (!regexOnlyLetters.test(input.name)) {
+    errors.name = "El nombre solo puede contener letras";
+  }
 
-  input.height_min === "" ||
-    input.height_min.length > 3 ||
-    (!regexOnlyNumbers.test(input.height_min) &&
-      (errors.height_min =
-        "El dato no puede exceder 2 digitos y solo debe tener números, tampoco puede estar vacio"));
+  if (!input.weight_min || input.weight_min === undefined) {
+    errors.weight_min = "El campo no puede estar vacío";
+  } else {
+    const weight_min = parseInt(input.weight_min);
+    if (isNaN(weight_min)) {
+      errors.weight_min = "Ingrese un número válido";
+    } else if (weight_min > 90) {
+      errors.weight_min = "El dato no puede ser mayor a 90";
+    } else if (weight_min > input.weight_max) {
+      errors.weight_min = "El valor no puede ser mayor al weight máximo";
+    }
+  }
 
-  input.height_max === "" ||
-    input.height_max.length > 3 ||
-    (!regexOnlyNumbers.test(input.height_max) &&
-      (errors.height_max =
-        "El dato no puede exceder 2 digitos y solo debe tener números, tampoco puede estar vacio"));
+  if (!input.weight_max || input.weight_max === undefined) {
+    errors.weight_max = "El campo no puede estar vacío";
+  } else {
+    const weight_max = parseInt(input.weight_max);
+    if (isNaN(weight_max)) {
+      errors.weight_max = "Ingrese un número válido";
+    } else if (weight_max > 90) {
+      errors.weight_max = "El dato no puede ser mayor a 90";
+    } else if (weight_max < input.weight_min) {
+      errors.weight_max = "El valor no puede ser menor al weight mínimo";
+    }
+  }
 
-  input.weight_min === "" ||
-    input.weight_min.length > 3 ||
-    (!regexOnlyNumbers.test(input.weight_min) &&
-      (errors.weight_min =
-        "El dato no puede exceder 2 digitos y solo debe tener números, tampoco puede estar vacio"));
+  if (!input.height_min || input.height_min === undefined) {
+    errors.height_min = "El campo no puede estar vacío";
+  } else {
+    const height_min = parseInt(input.height_min);
+    if (isNaN(height_min)) {
+      errors.height_min = "Ingrese un número válido";
+    } else if (height_min > 100) {
+      errors.height_min = "El dato no puede ser mayor a 100";
+    } else if (height_min > input.height_max) {
+      errors.height_min = "El valor no puede ser mayor al height máximo";
+    }
+  }
 
-  input.weight_max === "" ||
-    input.weight_max.length > 3 ||
-    (!regexOnlyNumbers.test(input.weight_max) &&
-      (errors.weight_max =
-        "El dato no puede exceder 2 digitos y solo debe tener números, tampoco puede estar vacio"));
+  if (!input.height_max || input.height_max === undefined) {
+    errors.height_max = "El campo no puede estar vacío";
+  } else {
+    const height_max = parseInt(input.height_max);
+    if (isNaN(height_max)) {
+      errors.height_max = "Ingrese un número válido";
+    } else if (height_max > 100) {
+      errors.height_max = "El dato no puede ser mayor a 100";
+    } else if (height_max < input.height_min) {
+      errors.height_max = "El valor no puede ser menor al height mínimo";
+    }
+  }
 
-  input.life_span === "" ||
-    input.life_span.length > 3 ||
-    (!regexOnlyNumbers.test(input.life_span) &&
-      (errors.life_span =
-        "El dato no puede exceder 2 digitos y solo debe tener números, tampoco puede estar vacio"));
+  if (input.life_span === "" || input.life_span === undefined) {
+    errors.life_span = "El dato no puede estar vacio";
+  } else if (input.life_span.length > 3) {
+    errors.life_span = "El dato no puede exceder 2 digitos";
+  }
 
-  /* !regexURL.test(input.image) &&
-    (errors.image = "El formato de anexar la imagen es incorrecto"); */
+  input.image === "" && (errors.image = "El campo no puede estar vacio");
 
   return errors;
 };

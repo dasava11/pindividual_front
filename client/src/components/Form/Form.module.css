@@ -7,7 +7,8 @@
 }
 
 .titleForm{
-margin-top: 5rem;
+margin-top: 2rem;
+margin-bottom: 2rem;
 }
 
 .form{
@@ -21,6 +22,12 @@ margin-top: 5rem;
     box-shadow: 0 1px 2px 2px rgb(200, 199, 199);
     background-color: white;
     
+}
+
+.imageForm{
+    max-height: 300px;
+    max-width: auto;
+    border-radius: 10px;
 }
 
 .styleImput {
@@ -51,6 +58,16 @@ margin-top: 5rem;
     width: 5rem
 }
 
+.errorWeight{
+    display: flex;
+    flex-direction: row;
+}
+
+.errorHeight{
+    display: flex;
+    flex-direction: row;
+}
+
 .danger {
     font-size: 10px;
     color: red;
@@ -59,8 +76,8 @@ margin-top: 5rem;
 }
 
 .backHome {
-    margin-top: 3rem;
-    margin-bottom: 3rem;
+    margin-top: 2rem;
+    margin-bottom: 3.5rem;
     color: aliceblue;
     font-weight: bold;
 }

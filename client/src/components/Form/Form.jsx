@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import styles from "./Form.module.css";
+import img3 from "./images/dog_reading.jpeg";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import validate from "./validate";
@@ -42,7 +43,12 @@ const Form = () => {
       [name]: value,
     });
 
-    setError(validate(input));
+    setError(
+      validate({
+        ...input,
+        [name]: value,
+      })
+    );
   };
 
   console.log(input);
@@ -69,25 +75,29 @@ const Form = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    input.height = { metric: `${input.height_min} - ${input.height_max}` };
-    input.weight = { metric: `${input.weight_min} - ${input.weight_max}` };
-    input.temperament = temperAdd;
+    if (Object.keys(error).length) {
+      alert("Verifique que todos los campos sean correctos");
+    } else {
+      input.height = { metric: `${input.height_min} - ${input.height_max}` };
+      input.weight = { metric: `${input.weight_min} - ${input.weight_max}` };
+      input.temperament = temperAdd;
 
-    axios
-      .post(REACT_APP_GET_ALL_DOGS, input)
-      .then((res) => alert(res.data.message))
-      .catch((res) => alert(res.response.data.message));
+      axios
+        .post(REACT_APP_GET_ALL_DOGS, input)
+        .then((res) => alert(res.data.message))
+        .catch((res) => alert(res.response.data.message));
 
-    setError({
-      name: "",
-      height_min: "",
-      height_max: "",
-      weight_min: "",
-      weight_max: "",
-      life_span: "",
-      image: "",
-      temperament: "",
-    });
+      setError({
+        name: "",
+        height_min: "",
+        height_max: "",
+        weight_min: "",
+        weight_max: "",
+        life_span: "",
+        image: "",
+        temperament: "",
+      });
+    }
   };
 
   const [tempers, setTempers] = useState([]);
@@ -103,6 +113,7 @@ const Form = () => {
     <div className={styles.containerForm}>
       <h1 className={styles.titleForm}>Create a new dog for your collection</h1>
       <form className={styles.form} onSubmit={handleSubmit}>
+        <img src={img3} alt="dog" className={styles.imageForm} />
         <div className={styles.styleImput}>
           <label className={styles.labelsForm}>Name:</label>
           <input
@@ -112,51 +123,60 @@ const Form = () => {
             onChange={handleChangeInput}
             type="text"
           />
-          {error.name && <p className={styles.danger}>{error.name}</p>}
+          {error.name && <span className={styles.danger}>{error.name}</span>}
+        </div>
+        <div className={styles.inputsWeight}>
+          <div>
+            <label className={styles.labelsForm}>Weight minimun (kg):</label>
+            <input
+              name="weight_min"
+              className={styles.inputsSize}
+              onChange={handleChangeInput}
+              type="number"
+            />
+            <label className={styles.labelsForm}>Weight maximun (kg):</label>
+            <input
+              name="weight_max"
+              className={styles.inputsSize}
+              onChange={handleChangeInput}
+              type="number"
+            />
+          </div>
+          <div className={styles.errorWeight}>
+            {error.weight_min && (
+              <p className={styles.danger}>{error.weight_min}</p>
+            )}
+            {error.weight_max && (
+              <p className={styles.danger}>{error.weight_max}</p>
+            )}
+          </div>
         </div>
         <div>
-          <label className={styles.labelsForm}>Weight minimun (kg):</label>
-          <input
-            name="weight_min"
-            className={styles.inputsSize}
-            onChange={handleChangeInput}
-            type="text"
-          />
-          {error.weight_min && (
-            <p className={styles.danger}>{error.weight_min}</p>
-          )}
-          <label className={styles.labelsForm}>Weight maximun (kg):</label>
-          <input
-            name="weight_max"
-            className={styles.inputsSize}
-            onChange={handleChangeInput}
-            type="text"
-          />
-          {error.weight_max && (
-            <p className={styles.danger}>{error.weight_max}</p>
-          )}
-        </div>
-        <div>
-          <label className={styles.labelsForm}>Height minimun (cm):</label>
-          <input
-            name="height_min"
-            className={styles.inputsSize}
-            onChange={handleChangeInput}
-            type="text"
-          />
-          {error.height_min && (
-            <p className={styles.danger}>{error.height_min}</p>
-          )}
-          <label className={styles.labelsForm}>Height maximun (cm):</label>
-          <input
-            name="height_max"
-            className={styles.inputsSize}
-            onChange={handleChangeInput}
-            type="text"
-          />
-          {error.height_max && (
-            <p className={styles.danger}>{error.height_max}</p>
-          )}
+          <div>
+            <label className={styles.labelsForm}>Height minimun (cm):</label>
+            <input
+              name="height_min"
+              className={styles.inputsSize}
+              onChange={handleChangeInput}
+              type="number"
+            />
+
+            <label className={styles.labelsForm}>Height maximun (cm):</label>
+            <input
+              name="height_max"
+              className={styles.inputsSize}
+              onChange={handleChangeInput}
+              type="number"
+            />
+          </div>
+          <div className={styles.errorHeight}>
+            {error.height_min && (
+              <p className={styles.danger}>{error.height_min}</p>
+            )}
+            {error.height_max && (
+              <p className={styles.danger}>{error.height_max}</p>
+            )}
+          </div>
         </div>
         <div className={styles.styleImput}>
           <label className={styles.labelsForm}>Life span:</label>
@@ -164,7 +184,7 @@ const Form = () => {
             name="life_span"
             className={styles.inputsForm}
             onChange={handleChangeInput}
-            type="text"
+            type="number"
           />
           {error.life_span && (
             <p className={styles.danger}>{error.life_span}</p>
@@ -176,7 +196,7 @@ const Form = () => {
             name="image"
             className={styles.inputsForm}
             onChange={handleChangeInput}
-            type="text"
+            type="url"
           />
           {error.image && <p className={styles.danger}>{error.image}</p>}
         </div>
@@ -215,7 +235,11 @@ const Form = () => {
               ))}
           </div>
         </div>
-        <button className={styles.addButton} type="submit">
+        <button
+          /* disabled={error && true} */
+          className={styles.addButton}
+          type="submit"
+        >
           Add Dog
         </button>
       </form>

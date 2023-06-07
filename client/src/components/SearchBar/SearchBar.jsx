@@ -17,6 +17,7 @@ const SearchBar = ({ setPages }) => {
     event.preventDefault();
     if (!search) {
       dispatch(getAllDogs());
+      setSearch("");
     } else {
       dispatch(getDogsByName(search));
       setPages(1);
@@ -29,6 +30,7 @@ const SearchBar = ({ setPages }) => {
       event.preventDefault();
       if (!search) {
         dispatch(getAllDogs());
+        setSearch("");
       } else {
         dispatch(getDogsByName(search));
         setPages(1);
