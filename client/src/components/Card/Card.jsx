@@ -2,7 +2,7 @@ import React from "react";
 import styles from "./Card.module.css";
 import { Link } from "react-router-dom";
 
-const Card = ({ id, image, name, weight, temperament, temperaments }) => {
+const Card = ({ id, image, name, weight, temperament }) => {
   return (
     <div className={styles.cardDogs}>
       <div className={styles.contentImg}>
@@ -12,7 +12,6 @@ const Card = ({ id, image, name, weight, temperament, temperaments }) => {
       {weight && <h4 className={styles.infodog}>Weight: {weight}</h4>}
       <h4 className={styles.infodog}>Temperaments:</h4>
       {temperament && <h4 className={styles.infodogTemper}>{temperament}</h4>}
-      {/* {temperaments && temperaments.map((temper)=>(<h4>{temper.name}</h4>))} */}
       <button className={styles.buttonCard}>
         {id && (
           <Link to={`/home/detail/${id}`} className={styles.buttonCard}>

@@ -3,25 +3,41 @@ import styles from "./SearchBar.module.css";
 import { useDispatch } from "react-redux";
 import { getAllDogs, getDogsByName } from "../../redux/actions/actions";
 
+const regexNumber = /^[0-9]+$/;
+
+const validation = (search) => {
+  const errors = {};
+  if (!regexNumber.test(search)) {
+    errors.search = "El campo no admite números";
+  }
+  return errors;
+};
+
 const SearchBar = ({ setPages }) => {
   const [search, setSearch] = useState("");
+  const [error, setError] = useState("");
   const dispatch = useDispatch();
 
   const handleSearch = (event) => {
     const { value } = event.target;
     setSearch(value);
-    console.log(value);
+    setError(validation(value));
   };
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    if (!search) {
-      dispatch(getAllDogs());
-      setSearch("");
+
+    if (Object.keys(error).length) {
+      alert("El campo no admite números");
     } else {
-      dispatch(getDogsByName(search));
-      setPages(1);
-      setSearch("");
+      if (!search) {
+        dispatch(getAllDogs());
+        setSearch("");
+      } else {
+        dispatch(getDogsByName(search));
+        setPages(1);
+        setSearch("");
+      }
     }
   };
 
@@ -43,7 +59,7 @@ const SearchBar = ({ setPages }) => {
     <form className={styles.containerSearchBar} onSubmit={handleSubmit}>
       <input
         type="search"
-        placeholder="Buscar una raza"
+        placeholder="Search a breed"
         onChange={handleSearch}
         onKeyDown={handleKey}
       />

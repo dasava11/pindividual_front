@@ -22,7 +22,7 @@ const Detail = () => {
       alert(error.message);
     }
   }, [id]);
-  console.log(dog);
+  //console.log(dog);
   return (
     <div className={styles.containerDetail}>
       <div className={styles.containerD}>

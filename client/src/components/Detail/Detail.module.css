@@ -1,5 +1,4 @@
 .containerDetail{
-    
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -27,7 +26,8 @@
 .imageDetail{
     max-width: 600px;
     max-height: 400px;
-    margin-bottom: 1rem;
+    /* margin-bottom: 1rem; */
+    margin: 4rem 0;
 }
 
 .tempersDetail{

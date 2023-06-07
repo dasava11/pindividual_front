@@ -1,6 +1,6 @@
 const regexOnlyLetters = /^[a-zA-Z\s]+$/;
+const regexSpaces = /^\s*$/;
 //const regexOnlyNumbers = /^[0-9]+$/;
-/* const regexURL = /^https/; */
 
 const validate = (input) => {
   const errors = {};
@@ -11,6 +11,8 @@ const validate = (input) => {
     errors.name = "El nombre no puede exceder 20 caracteres";
   } else if (!regexOnlyLetters.test(input.name)) {
     errors.name = "El nombre solo puede contener letras";
+  } else if (!regexSpaces.test(input.name)) {
+    errors.name = "El nombre no puede ser un string de espacios";
   }
 
   if (!input.weight_min || input.weight_min === undefined) {
@@ -19,6 +21,8 @@ const validate = (input) => {
     const weight_min = parseInt(input.weight_min);
     if (isNaN(weight_min)) {
       errors.weight_min = "Ingrese un número válido";
+    } else if (weight_min < 1) {
+      errors.weight_min = "El dato no puede ser menor a 1";
     } else if (weight_min > 90) {
       errors.weight_min = "El dato no puede ser mayor a 90";
     } else if (weight_min > input.weight_max) {
@@ -32,6 +36,8 @@ const validate = (input) => {
     const weight_max = parseInt(input.weight_max);
     if (isNaN(weight_max)) {
       errors.weight_max = "Ingrese un número válido";
+    } else if (weight_max < 1) {
+      errors.weight_max = "El dato no puede ser menor a 1";
     } else if (weight_max > 90) {
       errors.weight_max = "El dato no puede ser mayor a 90";
     } else if (weight_max < input.weight_min) {
@@ -45,6 +51,8 @@ const validate = (input) => {
     const height_min = parseInt(input.height_min);
     if (isNaN(height_min)) {
       errors.height_min = "Ingrese un número válido";
+    } else if (height_min < 10) {
+      errors.height_min = "El dato no puede ser menor a 10";
     } else if (height_min > 100) {
       errors.height_min = "El dato no puede ser mayor a 100";
     } else if (height_min > input.height_max) {
@@ -58,6 +66,8 @@ const validate = (input) => {
     const height_max = parseInt(input.height_max);
     if (isNaN(height_max)) {
       errors.height_max = "Ingrese un número válido";
+    } else if (height_max < 10) {
+      errors.height_max = "El dato no puede ser menor a 10";
     } else if (height_max > 100) {
       errors.height_max = "El dato no puede ser mayor a 100";
     } else if (height_max < input.height_min) {

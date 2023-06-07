@@ -51,8 +51,6 @@ const Form = () => {
     );
   };
 
-  console.log(input);
-
   const handleTemperAdd = (event) => {
     const { value } = event.target;
 
@@ -75,8 +73,9 @@ const Form = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
 
+    console.log(input);
     if (Object.keys(error).length) {
-      alert("Verifique que todos los campos sean correctos");
+      alert("Verify that all fields are correct");
     } else {
       input.height = { metric: `${input.height_min} - ${input.height_max}` };
       input.weight = { metric: `${input.weight_min} - ${input.weight_max}` };
@@ -86,6 +85,19 @@ const Form = () => {
         .post(REACT_APP_GET_ALL_DOGS, input)
         .then((res) => alert(res.data.message))
         .catch((res) => alert(res.response.data.message));
+
+      setInput({
+        name: "",
+        height_min: "",
+        height_max: "",
+        weight_min: "",
+        weight_max: "",
+        height: {},
+        weight: {},
+        life_span: "",
+        image: "",
+        temperament: [],
+      });
 
       setError({
         name: "",
@@ -113,7 +125,11 @@ const Form = () => {
     <div className={styles.containerForm}>
       <h1 className={styles.titleForm}>Create a new dog for your collection</h1>
       <form className={styles.form} onSubmit={handleSubmit}>
-        <img src={img3} alt="dog" className={styles.imageForm} />
+        <img
+          src={!input.image ? img3 : input.image}
+          alt="dog"
+          className={styles.imageForm}
+        />
         <div className={styles.styleImput}>
           <label className={styles.labelsForm}>Name:</label>
           <input
@@ -123,7 +139,9 @@ const Form = () => {
             onChange={handleChangeInput}
             type="text"
           />
-          {error.name && <span className={styles.danger}>{error.name}</span>}
+          <div>
+            {error.name && <span className={styles.danger}>{error.name}</span>}
+          </div>
         </div>
         <div className={styles.inputsWeight}>
           <div>
@@ -235,11 +253,7 @@ const Form = () => {
               ))}
           </div>
         </div>
-        <button
-          /* disabled={error && true} */
-          className={styles.addButton}
-          type="submit"
-        >
+        <button className={styles.addButton} type="submit">
           Add Dog
         </button>
       </form>
