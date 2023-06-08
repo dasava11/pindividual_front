@@ -17,7 +17,7 @@ export const getAllDogs = () => {
       response.data.map((dog) =>
         dog.temperaments
           ? (dog.temperament = dog.temperaments
-              .map((temper) => temper.name)
+              .map((temper) => temper.name + " ")
               .toString())
           : null
       );

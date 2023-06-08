@@ -11,7 +11,7 @@ const validate = (input) => {
     errors.name = "El nombre no puede exceder 20 caracteres";
   } else if (!regexOnlyLetters.test(input.name)) {
     errors.name = "El nombre solo puede contener letras";
-  } else if (!regexSpaces.test(input.name)) {
+  } else if (regexSpaces.test(input.name)) {
     errors.name = "El nombre no puede ser un string de espacios";
   }
 

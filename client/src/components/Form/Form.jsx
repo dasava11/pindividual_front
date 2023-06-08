@@ -50,20 +50,20 @@ const Form = () => {
       })
     );
   };
-
+console.log(input);
   const handleTemperAdd = (event) => {
     const { value } = event.target;
 
     if (!temperAdd.includes(value) && temperAdd.length <= 6) {
       setTemperAdd([...temperAdd, value]);
     }
-
     setInput({
       ...input,
       temperament: [...input.temperament, value],
     });
   };
 
+  console.log(temperAdd);
   const handleTemperDelete = (event) => {
     const { value } = event.target;
     let auxT = temperAdd.filter((t) => t !== value);
@@ -73,7 +73,6 @@ const Form = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    console.log(input);
     if (Object.keys(error).length) {
       alert("Verify that all fields are correct");
     } else {
@@ -111,6 +110,8 @@ const Form = () => {
       });
     }
   };
+
+  console.log(input.temperament);
 
   const [tempers, setTempers] = useState([]);
 
