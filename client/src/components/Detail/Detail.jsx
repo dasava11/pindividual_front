@@ -22,7 +22,7 @@ const Detail = () => {
       alert(error.message);
     }
   }, [id]);
-  //console.log(dog);
+
   return (
     <div className={styles.containerDetail}>
       <div className={styles.containerD}>
@@ -54,7 +54,7 @@ const Detail = () => {
           )}
         </div>
       </div>
-      <button className={styles.backHome} onClick={() => navigate("/home")}>
+      <button className={styles.backHome} onClick={() => navigate(-1)}>
         Back to home
       </button>
     </div>

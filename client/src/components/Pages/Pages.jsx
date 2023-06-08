@@ -28,7 +28,7 @@ export const Pages = ({ allDogs, pages, setPages }) => {
   };
   return (
     <div className={styles.containerButtons}>
-      <button className={styles.numbersPages} onClick={handleClickPrev}>
+      <button className={styles.arrowsPages} onClick={handleClickPrev}>
         {"<"}
       </button>
       {button &&
@@ -41,7 +41,7 @@ export const Pages = ({ allDogs, pages, setPages }) => {
             {b}
           </button>
         ))}
-      <button className={styles.numbersPages} onClick={handleClickNext}>
+      <button className={styles.arrowsPages} onClick={handleClickNext}>
         {">"}
       </button>
     </div>

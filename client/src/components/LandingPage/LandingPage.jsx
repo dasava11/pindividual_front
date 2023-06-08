@@ -8,7 +8,7 @@ const LandingPage = () => {
   return (
     <div className={styles.containerLanding}>
       <div className={styles.frontPage}>
-        <div>
+        <div className={styles.textTitle}>
           <h1 className={styles.title}>DOGS APP</h1>
           <br />
           <h1 className={styles.title}>Find your faithful friend</h1>
