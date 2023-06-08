@@ -50,7 +50,7 @@ const Form = () => {
       })
     );
   };
-  console.log(input);
+
   const handleTemperAdd = (event) => {
     const { value } = event.target;
 
@@ -63,7 +63,6 @@ const Form = () => {
     });
   };
 
-  console.log(temperAdd);
   const handleTemperDelete = (event) => {
     const { value } = event.target;
     let auxT = temperAdd.filter((t) => t !== value);
@@ -79,7 +78,7 @@ const Form = () => {
       input.height = { metric: `${input.height_min} - ${input.height_max}` };
       input.weight = { metric: `${input.weight_min} - ${input.weight_max}` };
       input.temperament = temperAdd;
-
+      console.log(input);
       axios
         .post(REACT_APP_GET_ALL_DOGS, input)
         .then((res) => alert(res.data.message))
@@ -111,8 +110,6 @@ const Form = () => {
     }
   };
 
-  console.log(input.temperament);
-
   const [tempers, setTempers] = useState([]);
 
   useEffect(() => {
@@ -132,7 +129,7 @@ const Form = () => {
           className={styles.imageForm}
         />
         <div className={styles.styleImput}>
-          <label className={styles.labelsForm}>Name:</label>
+          <label className={styles.labelsForm}>Breed name:</label>
           <input
             name="name"
             value={input.name}
@@ -227,7 +224,7 @@ const Form = () => {
           {error.image && <p className={styles.danger}>{error.image}</p>}
         </div>
         <div className={styles.styleImput}>
-          <label className={styles.labelsForm}>Temperament:</label>
+          <label className={styles.labelsForm}>Temperaments (max 7):</label>
           <select
             name={"temperament"}
             className={styles.inputsForm}

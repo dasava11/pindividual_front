@@ -23,8 +23,6 @@ const GridDogs = ({ allDogs, pages, setPages }) => {
                 weight={dog.weight?.metric}
                 temperament={dog.temperament}
                 temperaments={dog.temperaments}
-                pages={pages}
-                setPages={setPages}
               />
             );
           })}

@@ -2,11 +2,11 @@ import React from "react";
 import styles from "./Card.module.css";
 import { useNavigate } from "react-router-dom";
 
-const Card = ({ id, image, name, weight, temperament, setPages, pages }) => {
+const Card = ({ id, image, name, weight, temperament }) => {
   const navigate = useNavigate();
 
   const handleNavigate = () => {
-    navigate(`/home/detail/${id}`, { pages: { setPages } });
+    navigate(`/home/detail/${id}`);
   };
 
   return (

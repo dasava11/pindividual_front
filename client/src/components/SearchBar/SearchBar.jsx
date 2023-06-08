@@ -28,7 +28,7 @@ const SearchBar = ({ setPages }) => {
     event.preventDefault();
 
     if (Object.keys(error).length) {
-      alert("El campo no admite números");
+      alert("The field doesn't admit numbers");
     } else {
       if (!search) {
         dispatch(getAllDogs());
@@ -45,16 +45,16 @@ const SearchBar = ({ setPages }) => {
     if (event.key === "Enter") {
       event.preventDefault();
       if (Object.keys(error).length) {
-        alert("El campo no admite números");
+        alert("The field doesn't admit numbers");
       } else {
-      if (!search) {
-        dispatch(getAllDogs());
-        setSearch("");
-      } else {
-        dispatch(getDogsByName(search));
-        setPages(1);
-        setSearch("");
-      }
+        if (!search) {
+          dispatch(getAllDogs());
+          setSearch("");
+        } else {
+          dispatch(getDogsByName(search));
+          setPages(1);
+          setSearch("");
+        }
       }
     }
   };

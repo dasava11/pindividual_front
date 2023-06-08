@@ -25,8 +25,9 @@ const validate = (input) => {
       errors.weight_min = "El dato no puede ser menor a 1";
     } else if (weight_min > 90) {
       errors.weight_min = "El dato no puede ser mayor a 90";
-    } else if (weight_min > input.weight_max) {
-      errors.weight_min = "El valor no puede ser mayor al weight máximo";
+    } else if (weight_min >= input.weight_max) {
+      errors.weight_min =
+        "El valor no puede ser mayor o igual al weight máximo";
     }
   }
 
@@ -40,8 +41,9 @@ const validate = (input) => {
       errors.weight_max = "El dato no puede ser menor a 1";
     } else if (weight_max > 90) {
       errors.weight_max = "El dato no puede ser mayor a 90";
-    } else if (weight_max < input.weight_min) {
-      errors.weight_max = "El valor no puede ser menor al weight mínimo";
+    } else if (weight_max <= input.weight_min) {
+      errors.weight_max =
+        "El valor no puede ser menor o igual al weight mínimo";
     }
   }
 
@@ -56,7 +58,8 @@ const validate = (input) => {
     } else if (height_min > 100) {
       errors.height_min = "El dato no puede ser mayor a 100";
     } else if (height_min > input.height_max) {
-      errors.height_min = "El valor no puede ser mayor al height máximo";
+      errors.height_min =
+        "El valor no puede ser mayor o igual al height máximo";
     }
   }
 
@@ -71,14 +74,22 @@ const validate = (input) => {
     } else if (height_max > 100) {
       errors.height_max = "El dato no puede ser mayor a 100";
     } else if (height_max < input.height_min) {
-      errors.height_max = "El valor no puede ser menor al height mínimo";
+      errors.height_max =
+        "El valor no puede ser menor o igual al height mínimo";
     }
   }
 
   if (input.life_span === "" || input.life_span === undefined) {
-    errors.life_span = "El dato no puede estar vacio";
-  } else if (input.life_span.length > 3) {
-    errors.life_span = "El dato no puede exceder 2 digitos";
+    errors.life_span = "El campo no puede estar vacio";
+  } else {
+    const life_span = parseInt(input.life_span);
+    if (isNaN(life_span)) {
+      errors.life_span = "Ingrese un número válido";
+    } else if (life_span > 20) {
+      errors.life_span = "El valor no puede ser mayor a 20";
+    } else if (life_span < 8) {
+      errors.life_span = "El valor no puede ser menor a 8";
+    }
   }
 
   input.image === "" && (errors.image = "El campo no puede estar vacio");
