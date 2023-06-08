@@ -50,7 +50,7 @@ const Form = () => {
       })
     );
   };
-console.log(input);
+  console.log(input);
   const handleTemperAdd = (event) => {
     const { value } = event.target;
 
@@ -139,6 +139,7 @@ console.log(input);
             className={styles.inputsForm}
             onChange={handleChangeInput}
             type="text"
+            placeholder="Enter a name"
           />
           <div>
             {error.name && <span className={styles.danger}>{error.name}</span>}
@@ -152,6 +153,7 @@ console.log(input);
               className={styles.inputsSize}
               onChange={handleChangeInput}
               type="number"
+              placeholder="A number"
             />
             <label className={styles.labelsForm}>Weight maximun (kg):</label>
             <input
@@ -159,6 +161,7 @@ console.log(input);
               className={styles.inputsSize}
               onChange={handleChangeInput}
               type="number"
+              placeholder="A number"
             />
           </div>
           <div className={styles.errorWeight}>
@@ -178,6 +181,7 @@ console.log(input);
               className={styles.inputsSize}
               onChange={handleChangeInput}
               type="number"
+              placeholder="A number"
             />
 
             <label className={styles.labelsForm}>Height maximun (cm):</label>
@@ -186,6 +190,7 @@ console.log(input);
               className={styles.inputsSize}
               onChange={handleChangeInput}
               type="number"
+              placeholder="A number"
             />
           </div>
           <div className={styles.errorHeight}>
@@ -204,6 +209,7 @@ console.log(input);
             className={styles.inputsForm}
             onChange={handleChangeInput}
             type="number"
+            placeholder="Enter a number"
           />
           {error.life_span && (
             <p className={styles.danger}>{error.life_span}</p>
@@ -216,6 +222,7 @@ console.log(input);
             className={styles.inputsForm}
             onChange={handleChangeInput}
             type="url"
+            placeholder="Enter a URL"
           />
           {error.image && <p className={styles.danger}>{error.image}</p>}
         </div>

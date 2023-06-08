@@ -8,7 +8,7 @@ const regexNumber = /^[0-9]+$/;
 const validation = (search) => {
   const errors = {};
   if (regexNumber.test(search)) {
-    errors.search = "El campo no admite números";
+    errors.search = "The field doesn't admit numbers";
   }
   return errors;
 };

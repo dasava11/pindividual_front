@@ -1,22 +1,10 @@
 import React from "react";
-import { useState } from "react";
-import { Link } from "react-router-dom";
 import Twitter from "./img/Twitter.png";
 import Instagram from "./img/Instagram.png";
 import Facebook from "./img/Facebook.png";
 import styles from "./Footer.module.css";
 
 const Footer = () => {
-  const [email, setEmail] = useState("");
-
-  const handleChange = (e) => {
-    setEmail(e.target.value);
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setEmail("");
-  };
   return (
     <div className={styles.footer}>
       <footer>
