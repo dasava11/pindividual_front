@@ -5,9 +5,8 @@ import styles from "./Home.module.css";
 import NavBar from "../NavBar/NavBar";
 import FilterTempers from "../FilterTempers/FilterTempers";
 import GridDogs from "../GridDogs/GridDogs";
-import OrderAzzb from "../OrderAzzb/OrderAzzb";
+import TidyDogs from "../TidyDogs/TidyDogs";
 import FilterOrigin from "../FilterOrigin/FilterOrigin";
-import OrderByWeight from "../OrderByWeight/OrderByWeight";
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -23,13 +22,17 @@ const Home = () => {
       <NavBar setPages={setPages} />
       <div className={styles.containerHome}>
         <h1>Home</h1>
-        <div className={styles.filters}>
-          <h3>Filters</h3>
+        <div className={styles.statesInputs}>
+          <div className={styles.filters}>
+          <h3>Filter by</h3>
           <FilterTempers setPages={setPages} />
+          <h3>or</h3>
           <FilterOrigin setPages={setPages} />
-          <h3>Order By:</h3>
-          <OrderAzzb setPages={setPages} />
-          <OrderByWeight setPages={setPages} />
+          </div>
+          <div className={styles.filters}>
+          <h3>Order by:</h3>
+          <TidyDogs setPages={setPages} />
+          </div>
         </div>
         <GridDogs allDogs={allDogs} pages={pages} setPages={setPages} />
       </div>

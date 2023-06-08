@@ -35,7 +35,7 @@ export const Pages = ({ allDogs, pages, setPages }) => {
         button.map((b) => (
           <button
             value={b}
-            className={styles.numbersPages}
+            className={ b === pages ? styles.numberActive : styles.numbersPages}
             onClick={hanldleClickNumber}
           >
             {b}

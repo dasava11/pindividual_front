@@ -3,9 +3,8 @@ import {
   GET_ALL_DOGS,
   GET_DOGS_BY_NAMES,
   FILTER_DOGS_BY_TEMPERS,
-  ORDER_DOGS_BY_NAME,
+  ORDER_DOGS,
   FILTER_BY_ORIGIN,
-  ORDER_BY_WEIGHT,
 } from "../actionstypes/actionsType";
 const { REACT_APP_GET_ALL_DOGS } = process.env;
 
@@ -55,17 +54,9 @@ export const filterDogsByOrigin = (payload) => {
   };
 };
 
-export const orderDogsByName = (payload) => {
+export const orderDogs = (payload) => {
   return {
-    type: ORDER_DOGS_BY_NAME,
-    payload,
-  };
-};
-
-export const orderByWeight = (payload) => {
-  console.log(payload);
-  return {
-    type: ORDER_BY_WEIGHT,
+    type: ORDER_DOGS,
     payload,
   };
 };

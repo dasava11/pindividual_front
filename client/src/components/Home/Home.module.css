@@ -1,20 +1,22 @@
 .containerHome{
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content:space-between;
     align-items: center;
 }
 
-.gridDogs{
+.statesInputs{
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2rem;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20rem;
+    margin-bottom: 3rem;
 }
 
 .filters{
     display: flex;
-    flex-direction: row;
-    margin: 0 0 2rem 0;
-    justify-content: space-around;
+    justify-content: center;
     align-items: center;
+    border: 2px solid rgb(8, 65, 65);
+    border-radius: 5px;
+    padding: 0 1rem;
 }

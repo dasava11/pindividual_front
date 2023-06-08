@@ -2,9 +2,8 @@ import {
   GET_ALL_DOGS,
   GET_DOGS_BY_NAMES,
   FILTER_DOGS_BY_TEMPERS,
-  ORDER_DOGS_BY_NAME,
+  ORDER_DOGS,
   FILTER_BY_ORIGIN,
-  ORDER_BY_WEIGHT,
 } from "../actionstypes/actionsType";
 
 const initialState = {
@@ -41,58 +40,44 @@ const reducer = (state = initialState, action) => {
         allDogs: filterByTempers,
       };
 
-    case ORDER_DOGS_BY_NAME:
-      let orderDogsByName = [];
+    case ORDER_DOGS:
+      let orderDogs = [];
       if (action.payload === "Order") {
-        orderDogsByName = state.allDogs;
+        orderDogs = state.allDogs;
       } else if (action.payload === "A-Z") {
-        orderDogsByName = state.allDogs?.sort((a, b) =>
+        orderDogs = state.allDogs?.sort((a, b) =>
           a.name.localeCompare(b.name)
         );
       } else if (action.payload === "Z-A") {
-        orderDogsByName = state.allDogs.sort((b, a) =>
+        orderDogs = state.allDogs.sort((b, a) =>
           a.name.localeCompare(b.name)
         );
-      }
-
-      orderDogsByName = [...state.allDogs];
-      return {
-        ...state,
-        allDogs: orderDogsByName,
-      };
-
-    case ORDER_BY_WEIGHT:
-      let orderWeight = [];
-
-      if (action.payload === "OrderW") {
-        orderWeight = state.allDogs;
       } else if (action.payload === "min") {
-        state.allDogs.sort((a, b) =>
+        orderDogs = state.allDogs.sort((a, b) =>
           Number(a.weight?.metric.split(" ")[0]) >
           Number(b.weight?.metric.split(" ")[0])
             ? 1
             : -1
         );
       } else if (action.payload === "max") {
-        state.allDogs.sort((a, b) =>
+        orderDogs = state.allDogs.sort((a, b) =>
           Number(a.weight?.metric.split(" ")[0]) >
           Number(b.weight?.metric.split(" ")[0])
             ? -1
             : 1
         );
       }
-      let Nan = state.allDogs.filter((dog) =>
+      let Nan = orderDogs.filter((dog) =>
         isNaN(Number(dog.weight?.metric.split(" ")[0]))
       );
-      orderWeight = state.allDogs.filter(
+      orderDogs = state.allDogs.filter(
         (dog) => !isNaN(Number(dog.weight?.metric.split(" ")[0]))
       );
 
-      orderWeight = [...orderWeight, ...Nan];
-
+      orderDogs = [...orderDogs, ...Nan];
       return {
         ...state,
-        allDogs: orderWeight,
+        allDogs: orderDogs,
       };
 
     case FILTER_BY_ORIGIN:

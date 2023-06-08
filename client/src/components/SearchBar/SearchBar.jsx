@@ -44,6 +44,9 @@ const SearchBar = ({ setPages }) => {
   const handleKey = (event) => {
     if (event.key === "Enter") {
       event.preventDefault();
+      if (Object.keys(error).length) {
+        alert("El campo no admite números");
+      } else {
       if (!search) {
         dispatch(getAllDogs());
         setSearch("");
@@ -51,6 +54,7 @@ const SearchBar = ({ setPages }) => {
         dispatch(getDogsByName(search));
         setPages(1);
         setSearch("");
+      }
       }
     }
   };
