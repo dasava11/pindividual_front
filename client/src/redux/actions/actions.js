@@ -2,13 +2,12 @@ import axios from "axios";
 import {
   GET_ALL_DOGS,
   GET_DOGS_BY_NAMES,
-  GET_ALL_TEMPERS,
   FILTER_DOGS_BY_TEMPERS,
   ORDER_DOGS_BY_NAME,
   FILTER_BY_ORIGIN,
   ORDER_BY_WEIGHT,
 } from "../actionstypes/actionsType";
-const { REACT_APP_GET_ALL_DOGS, REACT_APP_GET_ALL_TEMPER } = process.env;
+const { REACT_APP_GET_ALL_DOGS } = process.env;
 
 export const getAllDogs = () => {
   return async (dispatch) => {
@@ -68,12 +67,5 @@ export const orderByWeight = (payload) => {
   return {
     type: ORDER_BY_WEIGHT,
     payload,
-  };
-};
-
-export const getAllTempers = () => {
-  return async (dispatch) => {
-    const responseT = await axios.get(REACT_APP_GET_ALL_TEMPER);
-    dispatch({ type: GET_ALL_TEMPERS, payload: responseT.data });
   };
 };
